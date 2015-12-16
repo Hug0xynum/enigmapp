@@ -1,6 +1,7 @@
 /*==================================*\
             FLASH MESSAGES
 \*==================================*/
+
 .flash{
   position:absolute;
   border:1px solid black;
@@ -190,7 +191,7 @@ body{
 	border: 2px solid #CCC;
 	background-image: url(/images/history/enigme2.jpg);
 	background-position: 35% 60%;
-  box-shadow: 5px 5px 5px #555;
+	box-shadow: 5px 5px 5px #555 ;
 }
  /*================ Philosophy */
 .philosophy1h{

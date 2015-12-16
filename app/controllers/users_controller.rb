@@ -1,10 +1,10 @@
-require 'will_paginate/array' 
+require 'will_paginate/array'
 
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
-  
+
   def index
     @titre = "Tous les utilisateurs"
     @users = User.all.sort_by{|user| user[:id]}.paginate(page: params[:page], per_page: 30)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if !signed_in?
       flash.now[:notice] = "Merci de vous identifier pour voir l'intégralité du contenu"
     else
-      @microposts = @user.microposts.paginate(:page => params[:page], per_page: 12)
+      #@microposts = @user.microposts.paginate(:page => params[:page], per_page: 12)
     end
 #[/TEST A ECRIRE]
   end
@@ -40,7 +40,8 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         sign_in @user
-        flash[:success] = "Bienvenue sur SSS!"
+        Progression.create(user: @user)
+        flash[:success] = "Bienvenue sur Enigma!"
         redirect_to @user
       else
         flash.now[:error] = "Oups! Votre inscription n'a pas pu se réaliser!"
@@ -80,23 +81,23 @@ class UsersController < ApplicationController
   end
 
   def user_params
-  	# Nécessaire pour pouvoir exécuter l'équivalent de @user = User.new(params[:user]) 
+  	# Nécessaire pour pouvoir exécuter l'équivalent de @user = User.new(params[:user])
     params.require(:user).permit(:nom, :email, :password,:password_confirmation)#, :salt,:encrypted_password
   end
 
-  def following
-    @titre = "Following"
-    @user = User.find(params[:id])
-    @users = @user.following.paginate(:page => params[:page], per_page: 20)
-    render 'show_follow'
-  end
-
-  def followers
-    @titre = "Followers"
-    @user = User.find(params[:id])
-    @users = @user.followers.paginate(:page => params[:page], per_page: 20)
-    render 'show_follow'
-  end
+  # def following
+  #   @titre = "Following"
+  #   @user = User.find(params[:id])
+  #   @users = @user.following.paginate(:page => params[:page], per_page: 20)
+  #   render 'show_follow'
+  # end
+  #
+  # def followers
+  #   @titre = "Followers"
+  #   @user = User.find(params[:id])
+  #   @users = @user.followers.paginate(:page => params[:page], per_page: 20)
+  #   render 'show_follow'
+  # end
   private
     def correct_user
       @user = User.find(params[:id])

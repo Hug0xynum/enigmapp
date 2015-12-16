@@ -43,9 +43,9 @@ group :development, :test do
   gem 'spring'
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
-
+  # gem 'sqlite3'
+  # gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+  gem 'pg'
   # Use rspec to test
   gem 'rspec-rails'
   gem 'annotate'
@@ -60,7 +60,7 @@ group :test do
   gem 'webrat', '0.7.1'
   gem 'spork-rails'
   gem 'factory_girl_rails'
-  
+
 end
 
 group :production do

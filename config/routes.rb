@@ -2,19 +2,20 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      #get :following, :followers
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
-  resources :relationships, :only => [:create, :destroy]
-  
+  #resources :microposts, :only => [:create, :destroy]
+  #resources :relationships, :only => [:create, :destroy]
+  get '/:label/enigmas', :to => 'enigmas#index'
+  get '/:label/enigmas/:difficulty', :to => 'enigmas#show'
+  post '/:label/enigmas/:difficulty', :to => 'answers#propose'
+  put '/:label/enigmas/:difficulty', :to => 'answers#use_clue'
   root :to => 'pages#home'
-  get '/contact', :to => 'pages#contact'
-  get '/about',   :to => 'pages#about'
-  get '/help',    :to => 'pages#help'
+  #get'/themes', :to => 'themes#index'
+  get '/rules',   :to => 'pages#rules'
   get '/signup',  :to => 'users#new'
-  get '/users/:id/microposts', :to => 'microposts#index'
   get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy'
   # The priority is based upon order of creation: first created -> highest priority.

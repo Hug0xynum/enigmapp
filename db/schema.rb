@@ -11,27 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820134837) do
+ActiveRecord::Schema.define(version: 20151215002150) do
 
-  create_table "microposts", force: :cascade do |t|
-    t.string   "content"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "enigma_id"
+    t.text     "wrong_answers", default: [],                 array: true
+    t.string   "right_answer"
+    t.datetime "solved_at"
+    t.boolean  "clue_used",     default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "answers", ["enigma_id"], name: "index_answers_on_enigma_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+
+  create_table "enigmas", force: :cascade do |t|
+    t.integer  "theme_id"
+    t.integer  "difficulty"
+    t.string   "label"
+    t.text     "description"
+    t.text     "clue"
+    t.string   "right_answer"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "enigmas", ["theme_id"], name: "index_enigmas_on_theme_id", using: :btree
+
+  create_table "progressions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "history",     default: 1,     null: false
+    t.integer  "philosophy",  default: 1,     null: false
+    t.integer  "maths",       default: 1,     null: false
+    t.integer  "technology",  default: 1,     null: false
+    t.integer  "score",       default: 0
+    t.boolean  "last_theme",  default: false
+    t.boolean  "last_enigma", default: false
+    t.datetime "finish_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "progressions", ["user_id"], name: "index_progressions_on_user_id", using: :btree
+
+  create_table "themes", force: :cascade do |t|
+    t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "nom"
@@ -43,6 +75,10 @@ ActiveRecord::Schema.define(version: 20150820134837) do
     t.boolean  "admin",              default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "answers", "enigmas"
+  add_foreign_key "answers", "users"
+  add_foreign_key "enigmas", "themes"
+  add_foreign_key "progressions", "users"
 end

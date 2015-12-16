@@ -1,4 +1,4 @@
-<h1>Sends de <%= @user.nom %></h1> 
+<h1>Sends de <%= @user.nom %></h1>
 
 <% unless @user.microposts.empty? %>
   <% if signed_in? %>
@@ -7,3 +7,5 @@
     </table>
   <% end %>
 <% end %>
+
+<%= time_ago_in_words(micropost.created_at) %>

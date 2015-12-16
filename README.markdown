@@ -1,4 +1,6 @@
-# Tutoriel Ruby on Rails : Application Exemple
+ENIGMA
+[School Project]
 
-Ceci est l'application web qui va permettre de mettre en application toutes les connaissances et compétences développées au cours du [* Tutoriel Ruby on Rails : Apprendre Rails par l'exemple *](http://railstutorial.org/).
-Application Exemple réalisée par [Hug0xynum](https://github.com/Hug0xynum).
+This project has a particular goal : learn how manage all parts of a project (development, marketing, strategy, ...) .
+
+Enigma is a website on which we must resolve some enigmas to win the game contest.

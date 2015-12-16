@@ -1,0 +1,13 @@
+<h1>Enigme <%= difficulty = @enigma.difficulty %></h1>
+
+  <h2><%= label = @enigma.label%></h2>
+  <p>
+    <%= simple_format(h @enigma.description)%><br>
+    <%= @enigma.clue%><br>
+    Bonne réponse: <%=@enigma.right_answer%><br>
+  </p>
+    <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+difficulty.to_s%>'>
+       <label for='proposition'>Réponse</label>
+           <input type="text" name='proposition' placeholder='Mot de <%= @enigma.right_answer.length%> lettres'> <br>
+           <input type="submit" name='submit' value='Soumettre'>
+   </form>

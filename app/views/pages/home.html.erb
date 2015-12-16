@@ -21,13 +21,10 @@
 
     </div>
 <% else %>
-	<h1>Enigma</h1>
-    <p>
-      Bienvenue sur Enigma !
-    </p>
-    <p>Déjà inscrit?
-      <%= link_to "Se connecter",  signin_path %>
-    <p>Nouveau?
-    <%= link_to "S'inscrire !",  signup_path, :class => "signup_button round" %>
-    </p>
+	<img class="enigma" src="/images/enigma.png">
+  <br>
+  <div class="buttons-connect">
+      <%= link_to "Se connecter",  signin_path, :class => "button" %>
+    <%= link_to "S'inscrire !",  signup_path, :class => "button" %>
+  </div>
 <% end %>

@@ -6,12 +6,12 @@
   <p>
     <%= simple_format(h @enigma.description)%><br>
   </p>
-    <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+difficulty.to_s%>'>
-       <label for='proposition'>Réponse</label>
+    <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+@enigma.difficulty.to_s%>'>
+       <label for='proposition'>Réponse: </label>
            <input type="text" name='proposition' placeholder='Mot de <%= @enigma.right_answer.length%> lettres'> <br>
            <input type="submit" name='submit' value='Soumettre'>
    </form>
-   <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+difficulty.to_s+"/clue"%>'>
+   <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+@enigmadifficulty.to_s+"/clue"%>'>
       <label for='clue'></label>
         <input type="hidden" name='clue' value="true">
         <% unless @clue == true%>

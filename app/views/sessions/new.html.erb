@@ -1,5 +1,5 @@
-
-
+<img class="enigma" src="/images/enigma.png">
+<div class="connexion">
 <%= form_for(:session, :url => sessions_path) do |f| %>
   <div class="field">
     <%= f.label :email, "Email" %><br />
@@ -14,4 +14,5 @@
   </div>
 <% end %>
 
-<p>Pas encore inscrit ? <%= link_to "S'inscrire !", signup_path %></p>
+<p>Pas encore inscrit ? <%= link_to "S'inscrire !", signup_path, class: "button" %></p>
+</div>

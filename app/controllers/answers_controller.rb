@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
           render 'enigmas/enigma'
         end
       else
-        render nothing:true, status: :forbidden
+        render(:file => File.join(Rails.root, 'public/403.html'), status: :forbidden, :layout => false)
       end
     end
   end

@@ -35,7 +35,7 @@ class EnigmasController < ApplicationController
         @enigma = enigma
         render 'enigmas/enigma'
       else
-        render nothing: true, status: :forbidden
+        render(:file => File.join(Rails.root, 'public/403.html'), status: :forbidden, :layout => false)
       end
     end
   end

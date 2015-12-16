@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
 
     #Select good theme
     if enigma.theme_id == nil
-      progression_current_theme = 100
+      progression_current_theme = 0
     elsif enigma.theme_id == 1
       progression_current_theme = @user.progression.history
     elsif enigma.theme_id == 2
@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
 
     #Check if current user has already answered to this enigma
     if (!answer.right_answer.nil?)
-      render nothing: true, status: :conflict
+      render(:file => File.join(Rails.root, 'public/409.html'), status: :conflict, :layout => false)
     else
       if (progression_current_theme >= enigma.difficulty)
       proposition = params[:proposition]

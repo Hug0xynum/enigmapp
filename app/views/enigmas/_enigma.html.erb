@@ -1,11 +1,14 @@
-<tr>
-  <td class="enigma">
+  <td class="enigmas">
     <% if (enigma.difficulty == 5)%>
     <a href='<%= "/"+Theme.where(id: enigma.theme_id).first.label+"/enigmas/"+enigma.difficulty.to_s%>'><%= enigma.label %></a>
     <span class="theme"> <%= Theme.where(id: enigma.theme_id).first.label %></span>
     <% else %>
-    <%= link_to enigma.label, 'enigmas/'+enigma.difficulty.to_s %>
-      <span class="difficulty"> <%= enigma.difficulty %></span>
+
+    <a href='<%= "/"+Theme.where(id: enigma.theme_id).first.label+"/enigmas/"+enigma.difficulty.to_s %>'>
+      <div class="philosophy1h">
+        <span class="difficulty"> <%= enigma.difficulty %></span>
+      </div>
+    </a>
     <% end %>
+
   </td>
-</tr>

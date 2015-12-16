@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151215002150) do
     t.integer  "theme_id"
     t.integer  "difficulty"
     t.string   "label"
+    t.string   "image"
     t.text     "description"
     t.text     "clue"
     t.string   "right_answer"

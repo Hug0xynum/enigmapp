@@ -35,6 +35,7 @@ Enigma.create({
   id:1,
   theme_id:1,
   difficulty:1,
+  image: "logo.png",
   label: "Vue d'Ensemble",
   description: "Je suis la connaissance complète ou partielle.
   Je viens du passé.
@@ -267,7 +268,7 @@ Enigma.create({
   "Si 'Skigtowak' signifie 'Mecanique'.
   Si 'Iujk' signifie 'Code'.
   Si 'Xgvojk' signifie 'Rapide'.
-  
+
   Que signifie : 'Uxjotgzkax' ?",
   clue: "César avait des secrets.",
   right_answer: "Ordinateur"

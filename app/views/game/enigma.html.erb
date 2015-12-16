@@ -1,0 +1,9 @@
+
+
+  <h2><%= @enigma.label%></h2>
+  <p>
+    <%= simple_format(h @enigma.description)%><br>
+    <%= @enigma.clue%><br>
+    longueur de mot attendu: <%= @enigma.right_answer.length%><br>
+    Bonne réponse: <%=@enigma.right_answer%><br>
+</p>

@@ -31,6 +31,7 @@ class EnigmasController < ApplicationController
         end
         #Select answer
         @answer = enigma.answers.where(user: @user).first
+        @clue = @answer.clue_used
         @enigma = enigma
         render 'enigmas/enigma'
       else

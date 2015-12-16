@@ -1,4 +1,4 @@
-<h1>Edition du profil</h1>
+
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -22,8 +22,3 @@
     <%= f.submit "Enregistrer les modifications" %>
   </div>
 <% end %>
-
-<div>
-  <%= gravatar_for @user %>
-  <a href="http://gravatar.com/emails">Changer sa photo de profil</a>
-</div>

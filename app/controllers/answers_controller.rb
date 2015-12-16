@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_filter :authenticate, :only => [:propose, :clue_used]
-  skip_before_action :verify_authenticity_token, :only => [:propose, :clue_used]
+  before_filter :authenticate, :only => [:propose, :use_clue]
+  skip_before_action :verify_authenticity_token, :only => [:propose, :use_clue]
   def propose
     @user = current_user #TODO: Define user globaly by token
     theme = Theme.where(label: params[:label]).first
@@ -69,10 +69,14 @@ class AnswersController < ApplicationController
   def use_clue
     @user = current_user
     theme = Theme.where(label: params[:label]).first
-    enigma = Enigma.where(theme_id: theme.id).where(difficulty: params[:difficulty]).first
-    answer = Answer.where(user: @user).where(enigma: enigma).first
-
-    answer.updates_attribute(clue_used: true)
-    render nothing:true
+    @enigma = Enigma.where(theme_id: theme.id).where(difficulty: params[:difficulty]).first
+    answer = Answer.where(user: @user).where(enigma: @enigma).first
+    clue = params[:clue]
+    if clue == "true"
+      answer.clue_used = true
+      answer.save
+    end
+    @clue = @enigma.clue
+    render 'enigmas/clue'
   end
 end

@@ -1,13 +1,21 @@
-<h1>Enigme <%= difficulty = @enigma.difficulty %></h1>
 
-  <h2><%= label = @enigma.label%></h2>
+<section class="tout">
+  <div class="history1w">
+    <h3 class="title"><%= label = @enigma.label%></h3>
+  </div>
   <p>
     <%= simple_format(h @enigma.description)%><br>
-    <%= @enigma.clue%><br>
-    Bonne réponse: <%=@enigma.right_answer%><br>
   </p>
     <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+difficulty.to_s%>'>
        <label for='proposition'>Réponse</label>
            <input type="text" name='proposition' placeholder='Mot de <%= @enigma.right_answer.length%> lettres'> <br>
            <input type="submit" name='submit' value='Soumettre'>
    </form>
+   <form accept-charset="UTF-8" method='post' action='/<%=Theme.where(id: @enigma.theme_id).first.label+"/enigmas/"+difficulty.to_s+"/clue"%>'>
+      <label for='clue'></label>
+        <input type="hidden" name='clue' value="true">
+        <% unless @clue == true%>
+          <input type="submit" name='submit' value="Obtenir un indice">
+        <% end %>
+  </form>
+</section>

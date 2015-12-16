@@ -1,0 +1,94 @@
+// Place all the styles related to the progression controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div{
+	display: inline-block;
+
+}
+body{
+	background-image:url(/images/background.png);
+	background-size: 1400px 720px;
+}
+
+img{
+	height: 72px;
+	width: 70px;
+	margin-left: 90px;
+	margin-top: -10px;
+}
+
+.all{
+	width: 780px;
+	margin: 0 auto;
+	margin-top: 240px;
+	transform: skewX(-15deg);
+}
+/*===========History================*/
+.history1h{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	background-image: url(/images/history/enigme1.jpg);
+	background-position: 50% 0%;
+	box-shadow: 5px 5px 5px #555;
+}
+
+.history2h{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	border: 2px solid #CCC;
+	background-image: url(/images/history/enigme2.jpg);
+	background-position: 35% 60%
+	box-shadow: 5px 5px 5px #555;
+}
+
+ /*=================Philosophy==============*/
+.philosophy1h{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	background-image: url(/images/philosophy/enigme1.jpg);
+	background-position: 50% 0%;
+	box-shadow: 5px 5px 5px #555;
+}
+
+.philosophy2h{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	background-image: url(/images/philosophy/enigme2.jpg);
+	background-position: 50% 0%;
+	box-shadow: 5px 5px 5px #555;
+}
+
+.philosofy3h{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	background-image: url(/images/philosophy/enigme3.jpg);
+	background-position: 50% 50%;
+	box-shadow: 5px 5px 5px #555;
+}
+
+/*================Unauthorisez=============*/
+.unauthorized1{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	border: 2px solid #CCC;
+	background-image: url(/images/unauthorised.png);
+	background-position: 55%;
+	box-shadow: 5px 5px 5px #555;
+}
+
+.unauthorized2{
+	margin-right: 30px;
+	width: 150px;
+	height: 350px;
+	border: 2px solid #CCC;
+	background-image: url(/images/unauthorised.png);
+	background-position: 55%;
+	box-shadow: 5px 5px 5px #555;
+}

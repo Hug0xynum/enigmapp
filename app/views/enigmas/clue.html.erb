@@ -1,0 +1,7 @@
+<h2>Enigme <%= difficulty = @enigma.difficulty %></h2>
+
+  <h2><%= label = @enigma.label%></h2>
+  <%= image_tag(@enigma.image, :alt => "Application Exemple")%>
+  <p>
+    <%= simple_format(h@enigma.clue)%><br>
+  </p>

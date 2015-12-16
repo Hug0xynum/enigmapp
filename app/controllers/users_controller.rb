@@ -24,13 +24,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @titre = @user.nom
-#>TODO<[TEST A ECRIRE/]
     if !signed_in?
       flash.now[:notice] = "Merci de vous identifier pour voir l'intégralité du contenu"
-    else
-      #@microposts = @user.microposts.paginate(:page => params[:page], per_page: 12)
     end
-#[/TEST A ECRIRE]
   end
 
   def create
@@ -85,19 +81,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nom, :email, :password,:password_confirmation)#, :salt,:encrypted_password
   end
 
-  # def following
-  #   @titre = "Following"
-  #   @user = User.find(params[:id])
-  #   @users = @user.following.paginate(:page => params[:page], per_page: 20)
-  #   render 'show_follow'
-  # end
-  #
-  # def followers
-  #   @titre = "Followers"
-  #   @user = User.find(params[:id])
-  #   @users = @user.followers.paginate(:page => params[:page], per_page: 20)
-  #   render 'show_follow'
-  # end
   private
     def correct_user
       @user = User.find(params[:id])
